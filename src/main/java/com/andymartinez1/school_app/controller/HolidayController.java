@@ -1,24 +1,22 @@
 package com.andymartinez1.school_app.controller;
 
-import com.andymartinez1.school_app.model.Holiday;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.andymartinez1.school_app.model.Holiday;
 
 @Controller
 public class HolidayController {
 
     @GetMapping("/holidays/{display}")
     public String displayHolidays(@PathVariable String display,
-                                  Model model) {
+            Model model) {
 
         if (null != display && display.equals("all")) {
             model.addAttribute("festival", true);
@@ -37,8 +35,7 @@ public class HolidayController {
                 new Holiday(" Jan 17 ", "Martin Luther King Jr. Day", Holiday.Type.FEDERAL),
                 new Holiday(" July 4 ", "Independence Day", Holiday.Type.FEDERAL),
                 new Holiday(" Sep 5 ", "Labor Day", Holiday.Type.FEDERAL),
-                new Holiday(" Nov 11 ", "Veterans Day", Holiday.Type.FEDERAL)
-        );
+                new Holiday(" Nov 11 ", "Veterans Day", Holiday.Type.FEDERAL));
         Holiday.Type[] types = Holiday.Type.values();
         for (Holiday.Type type : types) {
             model.addAttribute(type.toString(),
