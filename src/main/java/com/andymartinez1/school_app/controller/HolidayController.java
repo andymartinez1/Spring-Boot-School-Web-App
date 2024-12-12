@@ -1,22 +1,21 @@
 package com.andymartinez1.school_app.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.andymartinez1.school_app.model.Holiday;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.andymartinez1.school_app.model.Holiday;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class HolidayController {
 
     @GetMapping("/holidays/{display}")
     public String displayHolidays(@PathVariable String display,
-            Model model) {
+                                  Model model) {
 
         if (null != display && display.equals("all")) {
             model.addAttribute("festival", true);
